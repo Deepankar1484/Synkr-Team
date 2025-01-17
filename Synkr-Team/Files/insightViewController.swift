@@ -26,4 +26,13 @@ class insightViewController: UIViewController {
         }
     }
 
+    
+    @IBAction func ButtomComplete(_ sender: Any) {
+        let users = UserDataModel.shared.getUserDetails()
+        let tempraryUser = LoggedInUser(user: users)
+        if let task = task {
+            tempraryUser.updateTaskStatusToCompleted(taskId: task.taskId, for: task.startDate)
+            print("Task updated")
+        }
+    }
 }

@@ -33,6 +33,17 @@ enum Priority: String {
             return .red
         }
     }
+    // Computed property to define sorting order
+    var sortOrder: Int {
+        switch self {
+        case .low:
+            return 1
+        case .medium:
+            return 2
+        case .high:
+            return 3
+        }
+    }
 }
 
 
@@ -50,7 +61,8 @@ enum Usage: String {
     case work = "Work"
     case education = "Education"
 }
-enum Category: String {
+
+enum Category: String,CaseIterable {
     case sports = "Sports"
     case study = "Study"
     case work = "Work"
@@ -416,6 +428,7 @@ let sampleTasks: [Task] = [
 // All user class
 class UserDataModel {
     private var users: [User] = []
+    private var logUser: User?
     static let shared = UserDataModel()
     
     private init() {
@@ -424,7 +437,9 @@ class UserDataModel {
         users.append(exampleUser) // Adding example user
         
     }
-    
+    func getUserDetails() -> User {
+        return logUser!
+    }
     // Get user by ID
     func getUser(by userId: UUID) -> User? {
         return users.first { $0.userId == userId }
@@ -438,6 +453,7 @@ class UserDataModel {
     // Validate user login by email and password and this will return user so that we can inialise the user in app coding side
     func validateUser(email: String, password: String) -> User? {
         if userExists(email: email) {
+            logUser = users.first { $0.email == email && $0.password == password }
             return users.first { $0.email == email && $0.password == password }
         }
         return nil
@@ -467,19 +483,16 @@ class UserDataModel {
 class LoggedInUser {
     private var user: User
     static var currentUser: LoggedInUser?
-
     init(user: User) {
         self.user = user
         LoggedInUser.currentUser = self
         // Add sample tasks to the user's daily task calendar after initialization
 //        addSampleTasksToCalendar()
     }
-
     // Retrieve user details
     func getUserDetails() -> User {
         return user
     }
-
     // Add a task to a specific day in the daily task calendar
     func addTask(task: Task, to date: Date) {
         if let index = user.dailyTaskCalendar.firstIndex(where: { Calendar.current.isDate($0.date, inSameDayAs: date) }) {
@@ -490,7 +503,6 @@ class LoggedInUser {
         }
         UserDataModel.shared.updateUserData(for: user)
     }
-
     // Update an existing task in the daily task calendar
     func updateTask(updatedTask: Task, for date: Date) {
         if let dayIndex = user.dailyTaskCalendar.firstIndex(where: { Calendar.current.isDate($0.date, inSameDayAs: date) }) {
@@ -520,29 +532,12 @@ class LoggedInUser {
         }
         UserDataModel.shared.updateUserData(for: user)
     }
-//    private func addSampleTasksToCalendar() {
-//        for task in sampleTasks {
-//            if let taskDate = task.startDate {
-//                if let dayIndex = user.dailyTaskCalendar.firstIndex(where: { Calendar.current.isDate($0.date, inSameDayAs: taskDate) }) {
-//                    user.dailyTaskCalendar[dayIndex].todayTasks.append(task)
-//                } else {
-//                    let newDailyTasks = DailyTasks(date: taskDate, todayTasks: [task])
-//                    user.dailyTaskCalendar.append(newDailyTasks)
-//                }
-//            }
-//        }
-//    }
 }
 
 // Singleton Class for Task Data Model
 class TaskDataModel {
     private var tasks: [Task] = []
     static let shared = TaskDataModel()
-    
-//    private init() {
-//        tasks.append(contentsOf: sampleTasks) // Adding sample tasks
-//    }
-    
     // Get all tasks
     func getAllTasks() -> [Task] {
         return tasks

@@ -34,7 +34,6 @@ class LoginViewController: UIViewController {
         if let loggedUser = UserDataModel.shared.validateUser(email: email, password: password) {
             // Store logged-in user (if needed)
             UserLogged = loggedUser
-            
             // Load the HomeScreens storyboard
             let homeStoryboard = UIStoryboard(name: "HomeScreens", bundle: nil)
             

@@ -23,12 +23,84 @@ class HomeAllTaskViewController: UIViewController {
         taskCollection.register(taskCollectionViewCell.nib(), forCellWithReuseIdentifier: "taskCollectionViewCell")
         taskCollection.delegate = self
         taskCollection.dataSource = self
+        
+        // Set the compositional layout
+        taskCollection.collectionViewLayout = createCompositionalLayout()
     }
+    private func createCompositionalLayout() -> UICollectionViewLayout {
+        return UICollectionViewCompositionalLayout { sectionIndex, environment in
+            // You can use the `sectionIndex` if you plan to have multiple sections in the future
+            return self.createTaskSection()
+        }
+    }
+
+    private func createTaskSection() -> NSCollectionLayoutSection {
+        // Define the item size
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0), // Full width
+            heightDimension: .absolute(100)       // Fixed height
+        )
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+
+        // Define the group size
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .estimated(100) // Group height adjusts based on content
+        )
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+
+        // Define the section
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+        
+        // Optional: Add orthogonal scrolling behavior if needed
+        section.orthogonalScrollingBehavior = .none // No horizontal scrolling; tasks are vertical
+
+        return section
+    }
+
     private func updateUI() {
         // Use the LoggedUser property to update the UI
         if let loggedUser = loggedUser {
             print("LoggedUser: \(loggedUser.name)")
         }
+    }
+    
+    // Sort tasks by priority
+    func sortTasksByPriority() {
+        let todayIndex = getTodayDayIndex()
+        if let todayTasks = loggedUser?.dailyTaskCalendar[todayIndex].todayTasks {
+            // Sort the tasks based on priority
+            let sortedTasks = todayTasks.sorted { (firstTask: Task, secondTask: Task) -> Bool in
+                return firstTask.priority.sortOrder > secondTask.priority.sortOrder
+            }
+            
+            // Update the tasks in the model
+            loggedUser?.dailyTaskCalendar[todayIndex].todayTasks = sortedTasks
+            print("Tasks sorted by priority")
+        }
+        
+        // Reload collection view to reflect changes
+        taskCollection.reloadData()
+    }
+    
+    
+    func sortTasksByCompletionStatus() {
+        let todayIndex = getTodayDayIndex()
+        if let todayTasks = loggedUser?.dailyTaskCalendar[todayIndex].todayTasks {
+            // Sort tasks by completion status
+            let sortedTasks = todayTasks.sorted { (firstTask: Task, secondTask: Task) -> Bool in
+                return !firstTask.isCompleted && secondTask.isCompleted
+            }
+            
+            // Update the tasks in the model
+            loggedUser?.dailyTaskCalendar[todayIndex].todayTasks = sortedTasks
+            print("Tasks sorted by completion status")
+        }
+        
+        // Reload collection view to reflect changes
+        taskCollection.reloadData()
     }
 }
 
@@ -83,7 +155,7 @@ extension HomeAllTaskViewController: UICollectionViewDataSource{
 }
 extension HomeAllTaskViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.frame.width - 20 // Adjust padding
+        let width = collectionView.frame.width // Adjust padding
         return CGSize(width: width, height: 100) // Set the height based on your design
     }
 }

@@ -23,20 +23,16 @@ class taskCollectionViewCell: UICollectionViewCell {
     public func configure(with task: Task) {
         switch task.isCompleted {
         case true:
-            let attributedText = NSAttributedString(
-                string: taskName.text ?? "",
-                attributes: [
-                    .strikethroughStyle: NSUnderlineStyle.single.rawValue
-                ]
-            )
-            taskName.attributedText = attributedText
+            print("task completed")
+            taskName.backgroundColor = .green // Set background color to green for completed tasks
+            // Optionally trigger haptic feedback or display a notification
+            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
         case false:
-            let attributedText = NSAttributedString(
-                string: taskName.text ?? "",
-                attributes: [:]
-            )
-            taskName.attributedText = attributedText
+            taskName.backgroundColor = .white // Set background color to white for incomplete tasks
+            // Optionally trigger haptic feedback
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
         }
+
         
         taskImage.image = task.category.taskImage
         flagImage.image = UIImage(systemName: "flag.circle")
