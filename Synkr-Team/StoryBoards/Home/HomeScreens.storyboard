@@ -310,10 +310,10 @@
             </objects>
             <point key="canvasLocation" x="3680" y="41"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tab Bar Controller-->
         <scene sceneID="Uwp-TK-txk">
             <objects>
-                <tabBarController useStoryboardIdentifierAsRestorationIdentifier="YES" id="axZ-XM-bRd" sceneMemberID="viewController">
+                <tabBarController useStoryboardIdentifierAsRestorationIdentifier="YES" id="axZ-XM-bRd" customClass="MainTabBarController" customModule="Synkr_Team" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bWX-rF-n9D">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -321,6 +321,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="40T-KO-122" kind="relationship" relationship="viewControllers" id="Slw-EH-dI9"/>
+                        <segue destination="hb0-Bn-juS" kind="relationship" relationship="viewControllers" id="wDr-Xo-uSU"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1jR-Ve-gmT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -964,6 +965,16 @@
             </objects>
             <point key="canvasLocation" x="-35.877862595419849" y="40.845070422535215"/>
         </scene>
+        <!--timeCapsule-->
+        <scene sceneID="Bng-VU-ed8">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TimeCapsule" referencedIdentifier="timeCapsule" id="hb0-Bn-juS" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="AWd-jm-5M5"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ftC-lx-uhM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1123" y="592"/>
+        </scene>
         <!--Insight View Controller-->
         <scene sceneID="kej-jx-4Md">
             <objects>
@@ -1057,7 +1068,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Imv-qi-E02" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1098" y="735"/>
+            <point key="canvasLocation" x="-36" y="763"/>
         </scene>
         <!--Home All Task View Controller-->
         <scene sceneID="asz-PH-glb">
@@ -1165,6 +1176,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="373" height="371"/>
                             </imageView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Vj0-h7-lUI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="9ed-k5-IuM" secondAttribute="bottom" id="Jc8-Cz-OiA"/>
