@@ -15,6 +15,7 @@ class HomeViewController: UIViewController {
     @IBOutlet var segmentOutlet: UISegmentedControl!
     @IBOutlet var allTask: UIView!
     @IBOutlet var taskCategory: UIView!
+    @IBOutlet var overDue: UIView!
     
     @IBOutlet var todayDateHome: UILabel!
     
@@ -38,7 +39,7 @@ class HomeViewController: UIViewController {
             print("No user logged in.")
         }
     }
-    private func updateTaskProgress() {
+    public func updateTaskProgress() {
         if let user = loggedInUser {
             // Get today's tasks
             let todayIndex = getTodayDayIndex()
@@ -69,7 +70,7 @@ class HomeViewController: UIViewController {
             self.view.bringSubviewToFront(allTask)
             homeAllTaskViewController?.sortTasksByPriority()
         case 3:
-            self.view.bringSubviewToFront(allTask)
+            self.view.bringSubviewToFront(overDue)
         default:
             break
         }

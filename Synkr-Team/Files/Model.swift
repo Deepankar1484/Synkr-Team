@@ -477,6 +477,30 @@ class UserDataModel {
         print("User with email \(newUser.email) added successfully.")
         return true
     }
+    // New Function: Update tasks for a specific day in the user's daily task calendar
+    func updateDailyTasks(for userId: UUID, date: Date, updatedTasks: [Task]) -> Bool {
+        guard let userIndex = users.firstIndex(where: { $0.userId == userId }) else {
+            print("Error: User not found with ID \(userId).")
+            return false
+        }
+        
+        // Normalize the date to match the calendar's format (strip time components)
+        let calendar = Calendar.current
+        let normalizedDate = calendar.startOfDay(for: date)
+        
+        // Find the specific day in the user's daily task calendar
+        if let dayIndex = users[userIndex].dailyTaskCalendar.firstIndex(where: {
+            calendar.isDate($0.date, inSameDayAs: normalizedDate)
+        }) {
+            // Update the tasks for the specified day
+            users[userIndex].dailyTaskCalendar[dayIndex].todayTasks = updatedTasks
+            print("Tasks updated successfully for \(normalizedDate) in user \(userId).")
+            return true
+        } else {
+            print("Error: Date \(normalizedDate) not found in user's daily task calendar.")
+            return false
+        }
+    }
 }
 
 // Class for Logged-in User Data Management
