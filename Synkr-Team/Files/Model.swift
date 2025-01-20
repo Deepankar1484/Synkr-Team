@@ -15,6 +15,9 @@ enum RepeatFrequency: String { // we have mainly created a map for the same
     case friday = "Friday"
     case saturday = "Saturday"
     case sunday = "Sunday"
+    case none = "None"
+    case daily = "Daily"
+    case weekly = "Weekly"
 }
 
 enum Priority: String {

@@ -349,7 +349,7 @@ class CreateTaskTableViewController1: UITableViewController {
             }
 
             // Convert the selected category string to the appropriate enum value (adjust based on your enum design)
-        let category = Category(rawValue: selectedCategory) ?? .general //
+        let category = Category(rawValue: selectedCategory) ?? .others //
         
         
         // Set a default alert (you can modify this later if needed)
