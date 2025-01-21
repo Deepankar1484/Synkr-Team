@@ -27,6 +27,13 @@ class HomeAllTaskViewController: UIViewController {
         // Set the compositional layout
         taskCollection.collectionViewLayout = createCompositionalLayout()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // Sort and reload tasks when returning to the home screen
+        sortTasksByCompletionStatus()
+        taskCollection.reloadData()
+    }
+
     private func createCompositionalLayout() -> UICollectionViewLayout {
         return UICollectionViewCompositionalLayout { sectionIndex, environment in
             // You can use the `sectionIndex` if you plan to have multiple sections in the future
@@ -122,6 +129,8 @@ extension HomeAllTaskViewController: UICollectionViewDelegate{
         }
         // Push or present the detail view controller
         detailVC.title = "Insights"
+        // Set the delegate
+        detailVC.delegate = self
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }
@@ -156,5 +165,19 @@ extension HomeAllTaskViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.frame.width // Adjust padding
         return CGSize(width: width, height: 100) // Set the height based on your design
+    }
+}
+
+extension HomeAllTaskViewController: TaskUpdateDelegate {
+    func didUpdateTask(_ updatedTask: Task) {
+        let todayIndex = getTodayDayIndex()
+        // Update the task in the user's daily task calendar
+        if let index = loggedUser?.dailyTaskCalendar[todayIndex].todayTasks.firstIndex(where: { $0.taskId == updatedTask.taskId }) {
+            loggedUser?.dailyTaskCalendar[todayIndex].todayTasks[index] = updatedTask
+        }
+        // Re-sort tasks based on completion status
+        sortTasksByCompletionStatus()
+        // Reload the collection view
+        taskCollection.reloadData()
     }
 }
