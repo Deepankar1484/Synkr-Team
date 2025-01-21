@@ -37,10 +37,10 @@ class CreateTaskTableViewController1: UITableViewController {
         
            // Select the first category by default
            if let defaultButton = categoryButton.first {
-               print("Default category button title: \(defaultButton.currentTitle ?? "Unknown")")
+               
                updateCategorySelection(selectedButton: defaultButton)
            }
-        print("Category buttons count: \(categoryButton.count)")
+          
        
     }
 
@@ -186,7 +186,7 @@ class CreateTaskTableViewController1: UITableViewController {
     }
     
     @IBAction func PriorityButtonTapped(_ sender: Any) {
-        let actionSheet = UIAlertController(title: "Priority", message: "Select Task Priority", preferredStyle: .actionSheet)
+           let actionSheet = UIAlertController(title: "Priority", message: "Select Task Priority", preferredStyle: .actionSheet)
            
            let highAction = UIAlertAction(title: "High", style: .default) { _ in
                self.PriorityButton.setTitle("High", for: .normal)
@@ -313,7 +313,7 @@ class CreateTaskTableViewController1: UITableViewController {
         // Validate priority
         guard let priorityString = PriorityButton.title(for: .normal),
               priorityString != "No Priority",
-              let priority = Priority(rawValue: priorityString.lowercased()) else {
+              let priority = Priority(rawValue: priorityString) else {
             showAlert(title: "Missing Information", message: "Please select a valid priority.")
             return
         }
@@ -358,9 +358,14 @@ class CreateTaskTableViewController1: UITableViewController {
 
     }
     
+  
     
-    
-    
-    
+}
+
+
+#Preview{
+    var storyboard=UIStoryboard(name: "CreateTask", bundle: nil)
+    var countryVC=storyboard.instantiateViewController(withIdentifier: "createTask")
+    return countryVC
 }
 
