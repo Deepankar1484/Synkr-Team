@@ -12,10 +12,18 @@ class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let viewControllers = self.viewControllers {
-            let educationVC = viewControllers[1]
-            educationVC.tabBarItem.title = "Time Capsule"
-            educationVC.tabBarItem.image = UIImage(systemName: "battery.75percent")
-//            educationVC.tabBarItem.selectedImage = UIImage(systemName: "envlpe.fill")
+            let homeVC = viewControllers[0]
+            homeVC.tabBarItem.title = "My tasks"
+            homeVC.tabBarItem.image = UIImage(systemName: "house")
+            
+            let timeVC = viewControllers[1]
+            timeVC.tabBarItem.title = "Time Capsule"
+            timeVC.tabBarItem.image = UIImage(systemName: "battery.75percent")
+            
+            
+            let awardsVC = viewControllers[2]
+            awardsVC.tabBarItem.title = "Awards"
+            awardsVC.tabBarItem.image = UIImage(systemName: "trophy")
         }
     }
 }

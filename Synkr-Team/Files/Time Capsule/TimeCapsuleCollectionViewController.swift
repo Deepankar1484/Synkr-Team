@@ -10,6 +10,7 @@ class TimeCapsuleCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationItem.title = "Time Capsule"
         // Register NIBs
         collectionView.register(UINib(nibName: "TopCapsuleCell", bundle: nil), forCellWithReuseIdentifier: "TopCell")
         collectionView.register(UINib(nibName: "InProgressCell", bundle: nil), forCellWithReuseIdentifier: "InProgressCell")

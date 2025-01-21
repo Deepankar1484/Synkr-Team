@@ -266,6 +266,7 @@ struct Award{
     var dateEarned: Date
     var description: String
     var awardCount: Int
+    var progress: Float?
 }
 
 
@@ -438,7 +439,6 @@ class UserDataModel {
         // Add tasks to 14th January 2025
         addTasks(for: &exampleUser, tasks: sampleTasks)
         users.append(exampleUser) // Adding example user
-        
     }
     func getUserDetails() -> User {
         return logUser!

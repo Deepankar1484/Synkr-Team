@@ -35,15 +35,11 @@ class CreateTaskTableViewController1: UITableViewController {
            repeatButton.setTitle("None", for: .normal)
            PriorityButton.setTitle("Medium", for: .normal)
         
-           
-
-        
            // Select the first category by default
            if let defaultButton = categoryButton.first {
                print("Default category button title: \(defaultButton.currentTitle ?? "Unknown")")
                updateCategorySelection(selectedButton: defaultButton)
            }
-        
         print("Category buttons count: \(categoryButton.count)")
        
     }
@@ -97,20 +93,15 @@ class CreateTaskTableViewController1: UITableViewController {
         isStartDatePickerVisible.toggle()
         tableView.beginUpdates()
         tableView.endUpdates()
-        
     }
-    
     
     @IBAction func startTimeButtonTapped(_ sender: Any) {
         isStartTimePickerVisible.toggle()
         tableView.beginUpdates()
         tableView.endUpdates()
-        
     }
     
-    
     @IBAction func endDateButtonTapped(_ sender: Any) {
-        
         isEndDatePickerVisible.toggle()
         tableView.beginUpdates()
         tableView.endUpdates()
@@ -145,42 +136,28 @@ class CreateTaskTableViewController1: UITableViewController {
             formatter.dateStyle = .medium
         let date = formatter.string(from: (sender as AnyObject).date)
             startDateLabel.setTitle(date, for: .normal)
-        
-        
     }
-    
     
     @IBAction func startTimePickerAction(_ sender: Any) {
         let formatter = DateFormatter()
             formatter.timeStyle = .short
         let time = formatter.string(from: (sender as AnyObject).date)
             startTimeLabel.setTitle(time, for: .normal)
-        
-        
     }
     
-    
     @IBAction func endDatePickerAction(_ sender: Any) {
-        
         let formatter = DateFormatter()
             formatter.dateStyle = .medium
         let date = formatter.string(from: (sender as AnyObject).date)
             endDateLabel.setTitle(date, for: .normal)
-        
-        
     }
-    
     
     @IBAction func endTimePickerAction(_ sender: Any) {
         let formatter = DateFormatter()
             formatter.timeStyle = .short
         let time = formatter.string(from: (sender as AnyObject).date)
             endTimeLabel.setTitle(time, for: .normal)
-        
-        
-        
     }
-    
     
     @IBAction func repeatButtonTapped(_ sender: Any) {
         let actionSheet = UIAlertController(title: "Repeat", message: "Select Repeat Frequency", preferredStyle: .actionSheet)
@@ -263,7 +240,6 @@ class CreateTaskTableViewController1: UITableViewController {
     @IBAction func categoryButtonTapped(_ sender: UIButton) {
         updateCategorySelection(selectedButton: sender)
         //selectedCategory = "Sports"
-        
     }
     
     

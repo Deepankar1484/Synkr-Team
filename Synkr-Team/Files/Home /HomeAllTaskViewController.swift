@@ -120,10 +120,9 @@ extension HomeAllTaskViewController: UICollectionViewDelegate{
             let selectedTask = todayTasks[indexPath.row]
             detailVC.task = selectedTask // Pass the selected task to the detail VC
         }
-        
         // Push or present the detail view controller
-//        navigationController?.pushViewController(detailVC, animated: true)
-        present(detailVC, animated: true, completion: nil)
+        detailVC.title = "Insights"
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 

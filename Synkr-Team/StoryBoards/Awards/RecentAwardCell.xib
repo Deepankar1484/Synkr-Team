@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RecentAwardCell" id="gd9-SP-rGQ" customClass="RecentAwardCell" customModule="Synkr" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="367" height="153"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="6Bb-23-HmE">
+                <rect key="frame" x="0.0" y="0.0" width="367" height="153"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="tCr-QZ-dfr">
+                        <rect key="frame" x="10" y="0.0" width="347" height="153"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9Dh-be-jsQ">
+                                <rect key="frame" x="0.0" y="41.666666666666657" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="x38-5X-bax"/>
+                                    <constraint firstAttribute="width" constant="70" id="yAY-0C-9e8"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="byf-Ts-Osp">
+                                <rect key="frame" x="90" y="43.999999999999993" width="257" height="65.333333333333314"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weekly Warrior Trophy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hlX-95-p3j">
+                                        <rect key="frame" x="0.0" y="0.0" width="159.33333333333334" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Awards for completing all weekly tasks" textAlignment="natural" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dcw-qe-5c9">
+                                        <rect key="frame" x="0.0" y="26.000000000000004" width="233.66666666666666" height="15.666666666666668"/>
+                                        <color key="tintColor" red="0.23577381410000001" green="0.39313768900000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" red="0.23577381410000001" green="0.39313768900000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7 December, 2024" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="545-k1-3MZ">
+                                        <rect key="frame" x="0.0" y="49.666666666666671" width="112" height="15.666666666666671"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="tCr-QZ-dfr" firstAttribute="leading" secondItem="6Bb-23-HmE" secondAttribute="leading" constant="10" id="DBR-Gz-2jw"/>
+                    <constraint firstAttribute="bottom" secondItem="tCr-QZ-dfr" secondAttribute="bottom" id="Tne-1I-BQh"/>
+                    <constraint firstItem="tCr-QZ-dfr" firstAttribute="top" secondItem="6Bb-23-HmE" secondAttribute="top" id="cdX-yT-Z9V"/>
+                    <constraint firstAttribute="trailing" secondItem="tCr-QZ-dfr" secondAttribute="trailing" constant="10" id="lPd-Z2-2Ht"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <size key="customSize" width="367" height="153"/>
+            <connections>
+                <outlet property="awardDescription" destination="Dcw-qe-5c9" id="zAY-rC-UDz"/>
+                <outlet property="dateEarned" destination="545-k1-3MZ" id="B43-wP-u3X"/>
+                <outlet property="imageView" destination="9Dh-be-jsQ" id="Nhu-7n-HmD"/>
+                <outlet property="trophyName" destination="hlX-95-p3j" id="owA-PW-Pay"/>
+            </connections>
+            <point key="canvasLocation" x="131" y="9"/>
+        </collectionViewCell>
+    </objects>
+</document>

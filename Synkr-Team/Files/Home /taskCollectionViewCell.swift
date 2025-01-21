@@ -23,12 +23,17 @@ class taskCollectionViewCell: UICollectionViewCell {
     public func configure(with task: Task) {
         switch task.isCompleted {
         case true:
-            print("task completed")
-            taskName.backgroundColor = .green // Set background color to green for completed tasks
+            taskName.textColor = .gray // Change text color to grey for completed tasks
+            taskLabel.textColor = .gray
+            taskTime.textColor = .gray
+            flagImage.isHidden = true // Hide flag image for completed tasks
             // Optionally trigger haptic feedback or display a notification
             UIImpactFeedbackGenerator(style: .medium).impactOccurred()
         case false:
-            taskName.backgroundColor = .white // Set background color to white for incomplete tasks
+            taskName.textColor = .black // Set text color to black for incomplete tasks
+            taskLabel.textColor = .black
+            taskTime.textColor = .black
+            flagImage.isHidden = false // Show flag image for incomplete tasks
             // Optionally trigger haptic feedback
             UIImpactFeedbackGenerator(style: .light).impactOccurred()
         }

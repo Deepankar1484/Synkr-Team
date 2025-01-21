@@ -37,7 +37,7 @@ class LoginViewController: UIViewController {
             // Load the HomeScreens storyboard
             let homeStoryboard = UIStoryboard(name: "HomeScreens", bundle: nil)
             
-            guard let tabBarController = homeStoryboard.instantiateInitialViewController() as? UITabBarController else {
+            guard let tabBarController = homeStoryboard.instantiateViewController(withIdentifier: "tabBarController") as? UITabBarController else {
                     print("Error: TabBarController not found in Home storyboard")
                     return
                 }
@@ -63,13 +63,4 @@ class LoginViewController: UIViewController {
             print("User not found or incorrect credentials")
         }
     }
-    // Optional: Prepare for segue if needed
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "homePageSegue" {
-//            // Pass any data to the HomeViewController if necessary
-//            if let homeVC = segue.destination as? HomeViewController {
-//                homeVC.loggedInUser = UserLogged
-//            }
-//        }
-//    }
 }
