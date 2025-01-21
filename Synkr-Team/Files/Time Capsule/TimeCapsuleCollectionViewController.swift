@@ -11,6 +11,11 @@ class TimeCapsuleCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
 
         navigationItem.title = "Time Capsule"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .add,
+            target: self,
+            action: #selector(didTapAddButton)
+        )
         // Register NIBs
         collectionView.register(UINib(nibName: "TopCapsuleCell", bundle: nil), forCellWithReuseIdentifier: "TopCell")
         collectionView.register(UINib(nibName: "InProgressCell", bundle: nil), forCellWithReuseIdentifier: "InProgressCell")
@@ -22,7 +27,18 @@ class TimeCapsuleCollectionViewController: UICollectionViewController {
 
         loadDummyData()
     }
+    @objc func didTapAddButton() {
+        // Load the storyboard
+        let storyboard = UIStoryboard(name: "TimeCapsule", bundle: nil)
 
+        // Instantiate the view controller using its storyboard ID
+        guard let createVC = storyboard.instantiateViewController(withIdentifier: "CreateTimeCapsule") as? CreateTimeCapsuleTableViewController else {
+            print("Could not find view controller with ID 'CreateTimeCapsule'")
+            return
+        }
+        // Present the view controller
+        present(createVC, animated: true, completion: nil)
+    }
     // MARK: - Dummy Data
     func loadDummyData() {
         topCapsules = [
