@@ -18,21 +18,21 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rTm-74-0d3">
-                        <rect key="frame" x="16" y="31" width="216" height="21"/>
+                        <rect key="frame" x="36" y="25" width="210" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RGQ-zy-Zb0">
-                        <rect key="frame" x="16" y="68" width="216" height="21"/>
+                        <rect key="frame" x="36" y="63" width="210" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4qV-hm-q1a" customClass="CircularProgressBar" customModule="Synkr_Team" customModuleProvider="target">
-                        <rect key="frame" x="240" y="12" width="104" height="94"/>
+                        <rect key="frame" x="262" y="12" width="96" height="94"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
@@ -44,7 +44,7 @@
                 <outlet property="capsuleDeadline" destination="RGQ-zy-Zb0" id="6bq-EY-RCN"/>
                 <outlet property="capsuleName" destination="rTm-74-0d3" id="L4d-vH-cEm"/>
             </connections>
-            <point key="canvasLocation" x="-252" y="-20"/>
+            <point key="canvasLocation" x="-253.43511450381678" y="-20.422535211267608"/>
         </collectionViewCell>
     </objects>
     <resources>

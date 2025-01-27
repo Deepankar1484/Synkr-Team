@@ -24,10 +24,13 @@ class TimeCapsuleCell: UICollectionViewCell {
         }
         
         func setupAppearance() {
+            
+            backgroundColor = UIColor(red: 0.9, green: 0.85, blue: 1.0, alpha: 1.0)
+
             // Add border and padding to the cell
             layer.cornerRadius = 8
             layer.borderWidth = 2  // Increased border width for visibility
-            layer.borderColor = UIColor.systemGreen.cgColor
+            layer.borderColor = UIColor.black.cgColor
             layer.shadowColor = UIColor.black.cgColor
             layer.shadowOpacity = 0.1
             layer.shadowOffset = CGSize(width: 0, height: 1)

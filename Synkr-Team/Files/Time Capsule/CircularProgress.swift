@@ -30,6 +30,9 @@ class CircularProgressBar: UIView {
 
     // MARK: - Setup View
     private func setupView() {
+        // Set the background color
+        backgroundColor = UIColor(red: 0.9, green: 0.85, blue: 1.0, alpha: 1.0) // Light purple background
+
         // Setup background layer with no fill (transparent)
         backgroundLayer.fillColor = UIColor.clear.cgColor
         backgroundLayer.strokeColor = trackColor.cgColor

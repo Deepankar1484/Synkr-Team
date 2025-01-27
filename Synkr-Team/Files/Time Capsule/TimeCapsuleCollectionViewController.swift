@@ -41,29 +41,45 @@ class TimeCapsuleCollectionViewController: UICollectionViewController {
     }
     // MARK: - Dummy Data
     func loadDummyData() {
+        // Add dummy subtasks to the time capsules
         topCapsules = [
-            TimeCapsule(capsuleId: UUID(), capsuleName: "Finish Project", deadline: Date().addingTimeInterval(60 * 60 * 24 * 3), priority: .high, description: "Complete Synkr project", completionPercentage: 0.9, timeCapsuleCategory: .work, subtasks: [])
+            TimeCapsule(capsuleId: UUID(), capsuleName: "Finish Project", deadline: Date().addingTimeInterval(60 * 60 * 24 * 3), priority: .high, description: "Complete Synkr project", completionPercentage: 0.9, timeCapsuleCategory: .work, subtasks: [
+                Subtask(subtaskName: "Design the UI", description: "Create wireframes for the main screens", startDate: Date(), endDate: Date().addingTimeInterval(60 * 60 * 24), isCompleted: false),
+                Subtask(subtaskName: "Implement Core Features", description: "Develop core functionality for Synkr", startDate: Date().addingTimeInterval(60 * 60), endDate: Date().addingTimeInterval(60 * 60 * 48), isCompleted: false),
+                Subtask(subtaskName: "Test the App", description: "Run automated tests to check app functionality", startDate: Date().addingTimeInterval(60 * 60 * 24 * 2), endDate: Date().addingTimeInterval(60 * 60 * 24 * 3), isCompleted: false)
+            ])
         ]
-
+        
         inProgressCapsules = [
-            TimeCapsule(capsuleId: UUID(), capsuleName: "Morning Run", deadline: Date().addingTimeInterval(60 * 60 * 24), priority: .medium, description: "Run 5 km", completionPercentage: 0.5, timeCapsuleCategory: .sports, subtasks: []),
-            TimeCapsule(capsuleId: UUID(), capsuleName: "Prepare Presentation", deadline: Date().addingTimeInterval(60 * 60 * 48), priority: .high, description: "Presentation for project review", completionPercentage: 0.3, timeCapsuleCategory: .work, subtasks: []),
-            
-            TimeCapsule(capsuleId: UUID(), capsuleName: "Morning Run", deadline: Date().addingTimeInterval(60 * 60 * 24), priority: .medium, description: "Run 5 km", completionPercentage: 0.5, timeCapsuleCategory: .sports, subtasks: []),
-            TimeCapsule(capsuleId: UUID(), capsuleName: "Prepare Presentation", deadline: Date().addingTimeInterval(60 * 60 * 48), priority: .high, description: "Presentation for project review", completionPercentage: 0.3, timeCapsuleCategory: .work, subtasks: [])
+            TimeCapsule(capsuleId: UUID(), capsuleName: "Morning Run", deadline: Date().addingTimeInterval(60 * 60 * 24), priority: .medium, description: "Run 5 km", completionPercentage: 0.5, timeCapsuleCategory: .sports, subtasks: [
+                Subtask(subtaskName: "Warm-Up", description: "Do 5 minutes of stretching", startDate: Date(), endDate: Date().addingTimeInterval(60 * 10), isCompleted: true),
+                Subtask(subtaskName: "Run 5 km", description: "Complete the 5 km run", startDate: Date().addingTimeInterval(60 * 10), endDate: Date().addingTimeInterval(60 * 40), isCompleted: false)
+            ]),
+            TimeCapsule(capsuleId: UUID(), capsuleName: "Prepare Presentation", deadline: Date().addingTimeInterval(60 * 60 * 48), priority: .high, description: "Presentation for project review", completionPercentage: 0.3, timeCapsuleCategory: .work, subtasks: [
+                Subtask(subtaskName: "Create Slides", description: "Design the first 5 slides", startDate: Date(), endDate: Date().addingTimeInterval(60 * 60 * 12), isCompleted: false),
+                Subtask(subtaskName: "Add Content", description: "Write down key points for the presentation", startDate: Date().addingTimeInterval(60 * 60 * 12), endDate: Date().addingTimeInterval(60 * 60 * 24), isCompleted: false)
+            ])
         ]
 
         timeCapsules = [
-            TimeCapsule(capsuleId: UUID(), capsuleName: "Read a Book", deadline: Date().addingTimeInterval(60 * 60 * 24 * 7), priority: .low, description: "Finish reading Atomic Habits", completionPercentage: 1.0, timeCapsuleCategory: .study, subtasks: []),
-            TimeCapsule(capsuleId: UUID(), capsuleName: "Buy Groceries", deadline: Date().addingTimeInterval(60 * 60 * 8), priority: .medium, description: "Get weekly groceries", completionPercentage: 1.0, timeCapsuleCategory: .work, subtasks: []),
-            TimeCapsule(capsuleId: UUID(), capsuleName: "Complete Workout", deadline: Date().addingTimeInterval(60 * 60 * 24 * 2), priority: .high, description: "Full body workout", completionPercentage: 0.6, timeCapsuleCategory: .sports, subtasks: []),
-            TimeCapsule(capsuleId: UUID(), capsuleName: "Read a Book", deadline: Date().addingTimeInterval(60 * 60 * 24 * 7), priority: .low, description: "Finish reading Atomic Habits", completionPercentage: 0.2, timeCapsuleCategory: .study, subtasks: []),
-            TimeCapsule(capsuleId: UUID(), capsuleName: "Buy Groceries", deadline: Date().addingTimeInterval(60 * 60 * 8), priority: .medium, description: "Get weekly groceries", completionPercentage: 1.0, timeCapsuleCategory: .work, subtasks: []),
-            TimeCapsule(capsuleId: UUID(), capsuleName: "Complete Workout", deadline: Date().addingTimeInterval(60 * 60 * 24 * 2), priority: .high, description: "Full body workout", completionPercentage: 0.6, timeCapsuleCategory: .sports, subtasks: [])
+            TimeCapsule(capsuleId: UUID(), capsuleName: "Read a Book", deadline: Date().addingTimeInterval(60 * 60 * 24 * 7), priority: .low, description: "Finish reading Atomic Habits", completionPercentage: 1.0, timeCapsuleCategory: .study, subtasks: [
+                Subtask(subtaskName: "Read Chapters 1-3", description: "Complete the first three chapters", startDate: Date(), endDate: Date().addingTimeInterval(60 * 60 * 24 * 3), isCompleted: true),
+                Subtask(subtaskName: "Take Notes", description: "Write key takeaways from the chapters", startDate: Date().addingTimeInterval(60 * 60 * 24 * 3), endDate: Date().addingTimeInterval(60 * 60 * 24 * 4), isCompleted: false)
+            ]),
+            TimeCapsule(capsuleId: UUID(), capsuleName: "Buy Groceries", deadline: Date().addingTimeInterval(60 * 60 * 8), priority: .medium, description: "Get weekly groceries", completionPercentage: 1.0, timeCapsuleCategory: .work, subtasks: [
+                Subtask(subtaskName: "Make Grocery List", description: "Prepare a shopping list", startDate: Date(), endDate: Date().addingTimeInterval(60 * 30), isCompleted: true),
+                Subtask(subtaskName: "Go to the Store", description: "Visit the nearby grocery store", startDate: Date().addingTimeInterval(60 * 30), endDate: Date().addingTimeInterval(60 * 60 * 2), isCompleted: false)
+            ]),
+            TimeCapsule(capsuleId: UUID(), capsuleName: "Complete Workout", deadline: Date().addingTimeInterval(60 * 60 * 24 * 2), priority: .high, description: "Full body workout", completionPercentage: 0.6, timeCapsuleCategory: .sports, subtasks: [
+                Subtask(subtaskName: "Warm-Up", description: "5-minute warm-up exercise", startDate: Date(), endDate: Date().addingTimeInterval(60 * 10), isCompleted: true),
+                Subtask(subtaskName: "Full Body Routine", description: "Complete the workout routine", startDate: Date().addingTimeInterval(60 * 10), endDate: Date().addingTimeInterval(60 * 30), isCompleted: false)
+            ])
         ]
 
         collectionView.reloadData()
     }
+    
+    
 
     // MARK: - Compositional Layout
     private func createCompositionalLayout() -> UICollectionViewLayout {
@@ -234,6 +250,40 @@ class TimeCapsuleCollectionViewController: UICollectionViewController {
             return UICollectionViewCell()
         }
     }
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // Debugging: Print out the section and row values
+        print("Section: \(indexPath.section), Row: \(indexPath.row)")
+
+        // Get the selected time capsule based on the section and row
+        let selectedCapsule: TimeCapsule
+        switch indexPath.section {
+        case 0:
+            guard indexPath.row < topCapsules.count else { return }  // Prevent out-of-bounds error
+            selectedCapsule = topCapsules[indexPath.row]
+        case 1:
+            guard indexPath.row < inProgressCapsules.count else { return }  // Prevent out-of-bounds error
+            selectedCapsule = inProgressCapsules[indexPath.row]
+        case 2:
+            guard indexPath.row < timeCapsules.count else { return }  // Prevent out-of-bounds error
+            selectedCapsule = timeCapsules[indexPath.row]
+        default:
+            return
+        }
+
+        // Instantiate the SubtasksCollectionViewController from the storyboard
+        let storyboard = UIStoryboard(name: "Subtask", bundle: nil)
+        guard let subtasksVC = storyboard.instantiateViewController(withIdentifier: "SubtasksCollectionViewController") as? SubtasksCollectionViewController else {
+            return
+        }
+
+        // Pass the selected time capsule's subtasks to the SubtasksCollectionViewController
+        subtasksVC.subtasks = selectedCapsule.subtasks
+
+        // Use a navigation controller to push the SubtasksCollectionViewController
+        navigationController?.pushViewController(subtasksVC, animated: true)
+    }
+
+
 
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard kind == UICollectionView.elementKindSectionHeader,
@@ -253,7 +303,6 @@ class TimeCapsuleCollectionViewController: UICollectionViewController {
         return header
     }
 }
-
 class SupplementaryHeaderView: UICollectionReusableView {
     let titleLabel = UILabel()
 
@@ -280,3 +329,9 @@ class SupplementaryHeaderView: UICollectionReusableView {
         ])
     }
 }
+
+
+
+
+
+

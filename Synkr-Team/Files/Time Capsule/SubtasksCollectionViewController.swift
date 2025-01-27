@@ -11,6 +11,8 @@ private let reuseIdentifier = "Cell"
 
 class SubtasksCollectionViewController: UICollectionViewController {
     
+    var subtasks:[Subtask]=[]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
